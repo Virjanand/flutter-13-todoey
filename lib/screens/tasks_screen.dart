@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter13todoey/screens/add_task_screen.dart';
 import 'package:flutter13todoey/widgets/tasks_list.dart';
 
 class TasksScreen extends StatelessWidget {
@@ -10,6 +11,17 @@ class TasksScreen extends StatelessWidget {
         floatingActionButton: FloatingActionButton(
           backgroundColor: Colors.lightBlueAccent,
           child: Icon(Icons.add),
+          onPressed: () {
+            showModalBottomSheet(
+                context: context,
+                isScrollControlled: true,
+                builder: (context) => SingleChildScrollView(
+                        child: Container(
+                      padding: EdgeInsets.only(
+                          bottom: MediaQuery.of(context).viewInsets.bottom),
+                      child: AddTaskScreen(),
+                    )));
+          },
         ),
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
